@@ -24,3 +24,4 @@ def stringIncrementer(txt):
 print(stringIncrementer("h0ello0035"))
 print(stringIncrementer("0005"))
 print("trans rights!")
+print()
