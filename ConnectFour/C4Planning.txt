@@ -1,0 +1,18 @@
+
+Setup:
+- 7 columns
+- 6 rows
+
+Classes:
+- Player
+- ComputerPlayer
+- Game
+
+Functions:
+- TakeTurn
+- Check Column/Row availability
+- Check win condition
+- Quit
+
+- player number determines turn
+- turn % 2 == player 2, else player 1
