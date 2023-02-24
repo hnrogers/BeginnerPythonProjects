@@ -16,3 +16,25 @@ Functions:
 
 - player number determines turn
 - turn % 2 == player 2, else player 1
+
+
+1. start turn
+    -  turn % 2 != 0 -> p1, else p2
+    -  check column row availability 
+       (including input validity)
+    - check win condition, iterate turn if no win
+       and board has empty spaces
+
+
+t = Game()
+t.print_game_board()
+win_condition = False
+
+while win_condition is False:
+    t.check_move(input("Enter row (1-7): "), t.turn)
+    t.print_game_board()
+    win_condition = t.check_win(t.turn)
+    t.turn += 1
+
+
+    *** UPDATE WIN CONDITIONS TO CHECKING AROUND PIECE

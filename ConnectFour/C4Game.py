@@ -6,9 +6,10 @@ class Game:
     def __init__(self): # initiates game board [7 x 6 list of lists]
         self.game_board = [["_" for i in range(7)] for a in range(6)]
         self.turn = 1
+        self.check = False
         self.win_condition = False
     
-    def print_game_board(self): # works
+    def print_game_board(self, game): # works
         for row in self.game_board:
             print(*row, sep=" | ")
     
@@ -24,7 +25,7 @@ class Game:
         
         if r > 7 or r < 0:
             print("Invalid selection! \n")
-            return turn
+            return False
         
         for i in reversed(range(6)):
             if self.game_board[i][r] == "_":
@@ -33,25 +34,15 @@ class Game:
                 else:
                     self.game_board[i][r] = "X"
                 print()
-                return turn
+                return True
             
         print("Select another row! \n")
-        return turn
+        return False
 
-    def check_win(self, turn):
-        for row in self.game_board:
+    def check_win(self, turn, player1, player2):
+        for row in self.game_board: # horizonal check
             if re.search("(OOOO)", ''.join(row)) or re.search("(XXXX)", ''.join(row)):
-               print("Player 1 wins!" if turn % 2 != 0 else "Player 2 wins!")
+               print(f"{player1.p_name} wins!" if turn % 2 != 0 else f"{player2.p_name} wins!")
                return True
         
         return False 
-
-t = Game()
-t.print_game_board()
-win_condition = False
-
-while win_condition is False:
-    t.check_move(input("Enter row (1-7): "), t.turn)
-    t.print_game_board()
-    win_condition = t.check_win(t.turn)
-    t.turn += 1
